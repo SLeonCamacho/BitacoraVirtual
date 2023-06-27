@@ -1,7 +1,8 @@
-from django.forms import forms
+from django.forms import ModelForm, CharField
 from .models import Ingreso
 
-class IngresoFormulario(forms.ModelForm):
+class IngresoFormulario(ModelForm):
+    motivo=CharField(max_length=20)
     class Meta:
         model=Ingreso
-        
+        exclude=("timestamp",)
