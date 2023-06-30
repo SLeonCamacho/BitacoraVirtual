@@ -15,6 +15,6 @@ class Persona(models.Model):
 
 class Ingreso(models.Model):
     timestamp=models.DateTimeField(auto_now=True )
-    motivo=models.TextField()
+    motivo=models.CharField(max_length=50)
     placa=models.CharField(blank=True, null=True, max_length=9)
     persona=models.ForeignKey(Persona, on_delete=models.CASCADE)
