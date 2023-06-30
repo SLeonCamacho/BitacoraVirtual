@@ -13,7 +13,6 @@
 <style>
   html,
   body {
-    background-color: hsl(0, 0%, 71%);
     min-height: 100vh;
   }
 
@@ -22,6 +21,7 @@
     width: 60%;
     padding: 5em;
     padding-top: 1em;
+    border: solid;
     border-radius: 10px;
     margin: auto;
   }
@@ -40,6 +40,14 @@
 </style>
 
 <body>
+  <nav>
+    <div class="nav-wrapper grey">
+      <a href="#" class="brand-logo">Visitas</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="{% url 'vista_logout' %}">Salir</a></li>
+      </ul>
+    </div>
+  </nav>
   <div class="container">
     <div class="form">
       <h1>Registrar Visita</h1>

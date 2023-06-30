@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <title>Ingresos</title>
+</head>
+
+<body>
+    <nav>
+        <div class="nav-wrapper grey">
+            <a href="#" class="brand-logo">Visitas</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="{% url 'vista_logout' %}">Salir</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <h1>Registros Visita</h1>
+        <table id="registros" class="centered">
+            <thead>
+                <th>Fecha y Hora</th>
+                <th>Identificación</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Motivo</th>
+                <th>Placa</th>
+            </thead>
+        </table>
+    </div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#registros').DataTable({
+            ajax: {
+                url: '/api/ingresos/?format=datatables',
+                dataSrc: 'data'
+            },
+            columns: [
+                { data: 'timestamp' },
+                { data: 'persona.cedula' },
+                { data: 'persona.nombre' },
+                { data: 'persona.apellido' },
+                { data: 'motivo' },
+                { data: 'placa' },
+            ],
+            language: {
+                url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/es-ES.json',
+            }, order: [[0, 'desc']],
+        });
+    });
+</script>
+
+</html>
